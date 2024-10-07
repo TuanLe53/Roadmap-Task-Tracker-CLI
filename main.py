@@ -1,5 +1,6 @@
 import typer
 import json
+from rich import print
 from utils import get_current_time_str
 from task import create_new_task, update_task_file
 from config import TASKS_FILE
@@ -16,6 +17,9 @@ def add(description: str):
         file.seek(0)
         json.dump(file_data, file, indent=4)
         
+    print("[bold green]Success![/bold green] New task add to to do list")
+    print(new_task)
+        
 @app.command()
 def delete(task_id: int):
     
@@ -26,6 +30,6 @@ def delete(task_id: int):
         file_data["task_list"] = [task for task in tasks if task["id"] != task_id]
 
     update_task_file(file_data)
-        
+
 if __name__ == "__main__":
     app() 
