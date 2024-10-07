@@ -8,6 +8,15 @@ from config import TASKS_FILE
 app = typer.Typer()
 
 @app.command()
+def list():
+    with open(TASKS_FILE, "r") as f:
+        file_data = json.load(f)
+        if len(file_data["task_list"]) == 0:
+            print("You have no tasks on your list.")
+        else:
+            print(file_data["task_list"])
+
+@app.command()
 def add(description: str):
     new_task = create_new_task(description)
     
