@@ -30,3 +30,10 @@ def is_id_exists(task_id: int) -> bool:
                 return True
         
         return False
+    
+def get_tasks_by_status(status: str):
+    with open(TASKS_FILE, "r") as f:
+        file_data = json.load(f)
+        tasks = [task for task in file_data["task_list"] if task["status"] == status]
+        
+    return tasks
