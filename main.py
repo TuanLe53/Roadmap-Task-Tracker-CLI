@@ -64,6 +64,26 @@ def update(task_id: int, new_description: str):
             
     print("[bold green]Success![/bold green] The task has been updated.")
     
+@app.command()
+def mark_in_progress(task_id:int):
+    if not is_id_exists(task_id):
+        print(f"[bold red]Error:[/bold red] The task with ID {task_id} does not exist.")
+        return
+    
+    with open(TASKS_FILE, "r") as f:
+        file_data = json.load(f)
+        tasks = file_data["task_list"]
+        
+        for task in tasks:
+            if task["id"] == task_id:
+                task["status"] = "in-progress"
+                task["updated_at"] = get_current_time_str()
+        
+    file_data["task_list"] = tasks    
+    update_task_file(file_data)
+            
+    print("[bold green]Success![/bold green] The task has been updated.")
+        
 
 if __name__ == "__main__":
     app() 
