@@ -2,19 +2,26 @@ import typer
 import json
 from rich import print
 from utils import get_current_time_str
-from task import create_new_task, update_task_file, is_id_exists
+from task import create_new_task, update_task_file, is_id_exists, get_tasks_by_status
 from config import TASKS_FILE
 
 app = typer.Typer()
 
 @app.command()
-def list():
-    with open(TASKS_FILE, "r") as f:
-        file_data = json.load(f)
-        if len(file_data["task_list"]) == 0:
-            print("You have no tasks on your list.")
+def list(status: str = "all"):
+    if status == "all":        
+        with open(TASKS_FILE, "r") as f:
+            file_data = json.load(f)
+            if len(file_data["task_list"]) == 0:
+                print("You have no tasks on your list.")
+            else:
+                print(file_data["task_list"])
+    else:
+        tasks = get_tasks_by_status(status)
+        if len(tasks) == 0:
+            print(f"You have no tasks marked as {status}.")
         else:
-            print(file_data["task_list"])
+            print(tasks)
 
 @app.command()
 def add(description: str):
