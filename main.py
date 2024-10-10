@@ -9,6 +9,11 @@ app = typer.Typer()
 
 @app.command()
 def list(status: str = "all"):
+    valid_statuses = ["todo", "in-progress", "done", "all"]
+    if status not in valid_statuses:
+        print(f"[bold red]Error:[/bold red] Invalid status {status}. Must be one of {valid_statuses}")
+        return
+    
     if status == "all":        
         with open(TASKS_FILE, "r") as f:
             file_data = json.load(f)
