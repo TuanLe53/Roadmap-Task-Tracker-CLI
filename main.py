@@ -1,5 +1,7 @@
 import typer
 import json
+from typing import Optional
+from typing_extensions import Annotated
 from rich import print
 from utils import get_current_time_str
 from task import create_new_task, update_task_file, is_id_exists, get_tasks_by_status
@@ -8,7 +10,7 @@ from config import TASKS_FILE
 app = typer.Typer()
 
 @app.command()
-def list(status: str = "all"):
+def list(status: Annotated[Optional[str], typer.Argument()] = "all"):
     valid_statuses = ["todo", "in-progress", "done", "all"]
     if status not in valid_statuses:
         print(f"[bold red]Error:[/bold red] Invalid status {status}. Must be one of {valid_statuses}")
@@ -35,6 +37,9 @@ def add(description: str):
     with open(TASKS_FILE, "r+") as file:
         file_data = json.load(file)
         file_data["task_list"].append(new_task)
+        
+        file_data["task_list"].sort(key=lambda x: x["id"])
+        
         file.seek(0)
         json.dump(file_data, file, indent=4)
         
