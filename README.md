@@ -4,7 +4,7 @@
 1. **Clone the Repository**:
    ``` python
    git clone https://github.com/TuanLe53/Roadmap-Task-Tracker-CLI.git
-   cd expense-tracker-cli
+   cd task-tracker-cli
 2. Create and Activate a Virtual Environment
    ```sh
    python -m venv env
