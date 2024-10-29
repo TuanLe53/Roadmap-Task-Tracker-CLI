@@ -19,3 +19,16 @@
    ```sh
    pip install -r requirements.txt
    ```
+
+## Usage
+
+- Show help
+```sh
+python .\main.py --help
+```
+
+- `list`: List tasks
+```sh
+python .\main.py list #List all tasks
+python .\main.py list done #Lists all completed tasks
+```
