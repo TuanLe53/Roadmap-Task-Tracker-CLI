@@ -1,5 +1,12 @@
 # Roadmap-Task-Tracker-CLI
 
+
+## Description
+
+
+It is inspired by the [Task Tracker](https://roadmap.sh/projects/task-tracker) project from [roadmap.sh](https://roadmap.sh/).
+
+
 ## Installation
 1. **Clone the Repository**:
    ``` python
