@@ -2,7 +2,7 @@
 
 
 ## Description
-
+A command-line interface (CLI) application for tracking tasks with ease. This tool allows users to manage tasks directly from the terminal, supporting common operations such as listing, adding, updating, and marking tasks by status. Ideal for those who prefer a lightweight and efficient approach to task management.
 
 It is inspired by the [Task Tracker](https://roadmap.sh/projects/task-tracker) project from [roadmap.sh](https://roadmap.sh/).
 
