@@ -31,4 +31,31 @@ python .\main.py --help
 ```sh
 python .\main.py list #List all tasks
 python .\main.py list done #Lists all completed tasks
+python .\main.py list in-progress #Lists all tasks in progress
+python .\main.py list todo #Lists all pending tasks
+```
+
+- `add`: Add a task
+```sh
+python .\main.py add 'Task description'
+```
+
+- `delete`: Delete a task
+```sh
+python .\main.py delete 1
+```
+
+- `update`: Update a task
+```sh
+python .\main.py update 1 'New task description'
+```
+
+- `mark-done`: Mark a task as completed
+```sh
+python .\main.py mark_done 1
+```
+
+- `mark-in-progress`: Mark a task as in-progress
+```sh
+python .\main.py mark_done 1
 ```
